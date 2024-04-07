@@ -13,7 +13,6 @@ local w_eslint_d = function(lang)
     if has_file_in_root('.eslintrc.json')
         or has_file_in_root('.eslintrc.js')
         or has_file_in_root('.eslintrc.cjs') then
-      print('will use eslint')
       return require('formatter.filetypes.' .. lang).eslint_d()
     end
 

@@ -51,7 +51,6 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_next_item()
       elseif vim.fn["luasnip#expand_or_jumpable"]() then
-        print("calling luasnip")
         luasnip.jump(1)
       elseif has_words_before() then
         cmp.complete()
