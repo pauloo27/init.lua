@@ -23,7 +23,7 @@ local load_plugins = require('pauloo27.plugins.loader').load
 load_plugins({
   require('pauloo27.plugins.lsp'),        -- basic lsp support
   require('pauloo27.plugins.navigation'), -- better navigation, with Telescope, Harpoon and Neo-tree
-  require('pauloo27.plugins.appearence'), -- basic lsp support
+  require('pauloo27.plugins.appearence'), -- nice looking vim
 })
 
 -- load the lang just after the plugins are loaded
