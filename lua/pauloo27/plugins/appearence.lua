@@ -41,4 +41,23 @@ return {
     'HiPhish/rainbow-delimiters.nvim',
     event = "BufEnter",
   },
+
+  -- dashboard (start screen) 🏁
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('pauloo27.plugins._.alpha')
+    end
+  },
+
+
+  -- bottom line status bar 📊
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('pauloo27.plugins._.lualine')
+    end
+  },
 }
