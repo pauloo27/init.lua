@@ -1,7 +1,6 @@
 local defer = require('pauloo27.plugins.loader').defer
 
 local apply_theme = function()
-  -- TODO: move to another place
   -- visual warning that you are using root
   if os.getenv("USER") ~= 'root'
   then
