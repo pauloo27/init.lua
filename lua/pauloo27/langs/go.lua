@@ -1,4 +1,11 @@
 return {
+  load_format = function()
+    local set_ft_config = require('pauloo27.plugins._.format').set_ft_config
+
+    set_ft_config('go', {
+      function() return require('formatter.filetypes.go').gofmt() end,
+    })
+  end,
   load = function(on_attach, capabilities)
     require('lspconfig').gopls.setup({
       on_attach = on_attach,
