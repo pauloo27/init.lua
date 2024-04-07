@@ -20,66 +20,11 @@ end
 
 local M = {}
 
-local has_file_in_root = function(name)
-  local file = vim.fs.find(name, {
-    upward = true,
-    stop = vim.fs.normalize("~"),
-    path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
-  })
+M.ft_config = {}
 
-  return #file >= 1
+M.set_ft_config = function(ft, opts)
+  M.ft_config[ft] = opts
 end
-
-local w_eslint_d = function(lang)
-  return function()
-    if has_file_in_root('.eslintrc.json')
-        or has_file_in_root('.eslintrc.js')
-        or has_file_in_root('.eslintrc.cjs') then
-      return require('formatter.filetypes.' .. lang).eslint_d()
-    end
-
-    return nil
-  end
-end
-
-
-local w_prettierd = function(lang)
-  return function()
-    if has_file_in_root('.prettierrc')
-        or has_file_in_root('.prettierrc.json') then
-      return require('formatter.filetypes.' .. lang).prettierd()
-    end
-
-    return nil
-  end
-end
-
-M.ft_config = {
-  go = {
-    require('formatter.filetypes.go').gofmt,
-  },
-  javascript = {
-    w_eslint_d('javascript'),
-    w_prettierd('javascript'),
-  },
-  typescript = {
-    w_eslint_d('typescript'),
-    w_prettierd('typescript'),
-  },
-  svelte = {
-    require('formatter.filetypes.typescript').prettierd,
-  },
-
-  -- eww jsx, i think i am going to ... 🤢
-  typescriptreact = {
-    w_eslint_d('typescript'),
-    w_prettierd('typescript'),
-  },
-  javascriptreact = {
-    w_eslint_d('typescript'),
-    w_prettierd('typescript'),
-  },
-}
 
 M.format = function(options, write)
   local params = util.make_formatting_params(options)

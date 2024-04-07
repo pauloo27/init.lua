@@ -5,6 +5,19 @@
 require('pauloo27.core.prefs')    -- general preferences
 require('pauloo27.core.mappings') -- general mappings
 
+local lang_loader = require('pauloo27.langs.loader')
+local load_langs = lang_loader.load_langs
+local register_langs = lang_loader.register_langs
+
+register_langs({
+  require('pauloo27.langs.lua'),       -- lua support (usefull for nvim config)
+  require('pauloo27.langs.go'),        -- go support
+  require('pauloo27.langs.js_and_ts'), -- js and ts support
+  require('pauloo27.langs.svelte'),    -- svelte support
+  require('pauloo27.langs.rust'),      -- rust support
+  require('pauloo27.langs.elixir'),    -- elixir support
+})
+
 -- prepare the plugin manager (lazy.nvim)
 local load_plugins = require('pauloo27.plugins.loader').load
 load_plugins({
@@ -13,8 +26,5 @@ load_plugins({
   require('pauloo27.plugins.appearence'), -- basic lsp support
 })
 
-local load_langs = require('pauloo27.langs.loader')
-load_langs({
-  require('pauloo27.langs.lua'), -- lua support (usefull for nvim config)
-  require('pauloo27.langs.go'),  -- go support
-})
+-- load the lang just after the plugins are loaded
+load_langs()
