@@ -24,6 +24,10 @@ load_plugins({
   require('pauloo27.plugins.lsp'),        -- basic lsp support
   require('pauloo27.plugins.navigation'), -- better navigation, with Telescope, Harpoon and Neo-tree
   require('pauloo27.plugins.appearence'), -- nice looking vim
+  require('pauloo27.plugins.copilot'),    -- copilot integration
+  require('pauloo27.plugins.nice'),       -- some nice to have stuff
+  require('pauloo27.plugins.wakatime'),   -- track coding time
+  require('pauloo27.plugins.git'),        -- git integration
 })
 
 -- load the lang just after the plugins are loaded

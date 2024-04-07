@@ -50,7 +50,6 @@ return {
     end
   },
 
-
   -- bottom line status bar 📊
   {
     'nvim-lualine/lualine.nvim',
@@ -59,4 +58,28 @@ return {
       require('pauloo27.plugins._.lualine')
     end
   },
+
+  -- improve some UIs 💄, such as lsp rename 
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {
+      input = {
+        insert_only = false,
+      },
+    },
+  },
+
+  -- better prompts 📝
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    }
+  },
+
 }
