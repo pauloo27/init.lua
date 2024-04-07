@@ -57,7 +57,7 @@ local setup_telescope = function()
   map('n', '<C-K>', "<cmd>lua require('telescope.builtin').find_files()<CR>", defaultOpts)
   map('n', '<leader>g', "<cmd>lua require('telescope.builtin').live_grep()<CR>", defaultOpts)
   map('n', '<leader>vc', "<cmd>lua require('telescope.builtin').find_files({search_dirs={'~/.config/nvim'}})<CR>",
-  defaultOpts)
+    defaultOpts)
   map('n', '<leader>1', "<cmd>:bprevious<CR>", defaultOpts)
   map('n', '<leader>2', "<cmd>:bnext<CR>", defaultOpts)
   map('n', '<leader>0', "<cmd>lua require('telescope.builtin').buffers()<CR>", defaultOpts)
