@@ -59,7 +59,7 @@ return {
     end
   },
 
-  -- improve some UIs 💄, such as lsp rename 
+  -- improve some UIs 💄, such as lsp rename
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
