@@ -24,6 +24,7 @@ end
 local w_prettierd = function(lang)
   return function()
     if has_file_in_root('.prettierrc')
+        or has_file_in_root('.prettierrc.js')
         or has_file_in_root('.prettierrc.json') then
       return require('formatter.filetypes.' .. lang).prettierd()
     end
