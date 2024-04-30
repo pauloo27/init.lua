@@ -47,6 +47,7 @@ end
 local setup_telescope = function()
   require('telescope').setup({
     defaults = {
+      path_display = { "truncate" },
       file_sorter = require 'telescope.sorters'.get_fuzzy_file,
       generic_sorter = require 'telescope.sorters'.get_generic_fuzzy_sorter,
       color_devicons = true,
