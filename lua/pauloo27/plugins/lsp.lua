@@ -1,6 +1,5 @@
 local map = vim.api.nvim_set_keymap
 local silentOps = { noremap = true, silent = true }
-local defer = require('pauloo27.plugins.loader').defer
 
 map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silentOps)
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', silentOps)
