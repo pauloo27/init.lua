@@ -17,6 +17,8 @@ o.shiftwidth = 2
 -- more "natural" spliting behavior
 o.splitbelow = true
 o.splitright = true
+
+-- show line at column 80
 o.colorcolumn = '80'
 
 -- allow for :find <file> to search in subdirectories
