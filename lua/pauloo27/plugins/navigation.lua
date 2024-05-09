@@ -121,7 +121,6 @@ return {
         {
           event = "neo_tree_popup_input_ready",
           handler = function(args)
-            vim.cmd("stopinsert")
             vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
           end,
         }
