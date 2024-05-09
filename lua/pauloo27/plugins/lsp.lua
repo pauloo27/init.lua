@@ -32,12 +32,4 @@ return {
       vim.cmd("autocmd BufWritePost * lua require('pauloo27.plugins._.format').format({}, true)")
     end
   },
-  -- lsp errors listing 📜
-  {
-    "folke/trouble.nvim",
-    branch = "dev",
-    event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {},
-  },
 }
