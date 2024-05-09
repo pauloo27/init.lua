@@ -83,17 +83,6 @@ return {
     config = setup_telescope,
   },
 
-  -- project nvim 📂
-  {
-    "ahmedkhalf/project.nvim",
-    event = "BufRead",
-    config = function()
-      require("project_nvim").setup({
-        manual_mode = true,
-      })
-    end,
-  },
-
   -- file tree 🌲
   {
     "nvim-neo-tree/neo-tree.nvim",
