@@ -1,12 +1,12 @@
 local defer = require('pauloo27.plugins.loader').defer
 
 local apply_theme = function()
-  -- visual warning that you are using root
-  if os.getenv("USER") ~= 'root'
+  -- "visual warning" that you are using root
+  if os.getenv("USER") == 'root'
   then
-    vim.cmd("colorscheme catppuccin")
-  else
     vim.cmd("colorscheme darkblue")
+  else
+    vim.cmd("colorscheme catppuccin")
   end
 
   -- transparent background
@@ -41,15 +41,6 @@ return {
     event = "BufEnter",
   },
 
-  -- dashboard (start screen) 🏁
-  {
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('pauloo27.plugins._.alpha')
-    end
-  },
-
   -- bottom line status bar 📊
   {
     'nvim-lualine/lualine.nvim',
@@ -69,17 +60,4 @@ return {
       },
     },
   },
-
-  -- better prompts 📝
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    }
-  },
-
 }
