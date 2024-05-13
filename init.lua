@@ -14,6 +14,7 @@ register_langs({
   require('pauloo27.langs.go'),        -- go support
   require('pauloo27.langs.js_and_ts'), -- js and ts support
   require('pauloo27.langs.svelte'),    -- svelte support
+  require('pauloo27.langs.java'),      -- java support
   require('pauloo27.langs.rust'),      -- rust support
   require('pauloo27.langs.elixir'),    -- elixir support
 })
