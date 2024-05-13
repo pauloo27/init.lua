@@ -1,3 +1,4 @@
+local lazy_event = require('pauloo27.plugins.loader').lazy_event
 local defer = require('pauloo27.plugins.loader').defer
 
 local apply_theme = function()
@@ -32,7 +33,7 @@ return {
   -- syntax highlighting 🌈
   {
     'sheerun/vim-polyglot',
-    event = 'VeryLazy',
+    event = lazy_event,
   },
 
   -- pair brackets 🧱
@@ -53,7 +54,7 @@ return {
   -- improve some UIs 💄, such as lsp rename
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    event = lazy_event,
     opts = {
       input = {
         insert_only = false,

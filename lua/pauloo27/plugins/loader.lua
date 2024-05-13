@@ -28,4 +28,5 @@ end
 return {
   load = load,
   defer = defer,
+  lazy_event = #vim.fn.argv() > 0 and "VeryLazy" or "UIEnter"
 }

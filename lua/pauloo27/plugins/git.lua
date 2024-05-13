@@ -1,3 +1,5 @@
+local lazy_event = require('pauloo27.plugins.loader').lazy_event
+
 return {
   -- git integration ⬆️
   {
@@ -8,7 +10,7 @@ return {
   -- more git ⬆️
   {
     'lewis6991/gitsigns.nvim',
-    event = 'VeryLazy',
+    event = lazy_event,
     config = function()
       require('gitsigns').setup({})
     end,

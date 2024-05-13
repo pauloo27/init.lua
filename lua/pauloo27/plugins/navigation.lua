@@ -1,5 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local defaultOpts = { noremap = true }
+local lazy_event = require('pauloo27.plugins.loader').lazy_event
 
 -- neo tree (file tree)
 map('n', '<C-t>', '<cmd>Neotree focus<CR>', defaultOpts)
@@ -69,7 +70,7 @@ return {
   -- harpoon 🔖
   {
     "ThePrimeagen/harpoon",
-    event = "VeryLazy",
+    event = lazy_event,
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = setup_harpoon,
