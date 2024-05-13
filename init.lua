@@ -23,6 +23,7 @@ register_langs({
 local load_plugins = require('pauloo27.plugins.loader').load
 load_plugins({
   require('pauloo27.plugins.lsp'),        -- basic lsp support
+  require('pauloo27.plugins.gf'),         -- go to file under cursor in other window
   require('pauloo27.plugins.navigation'), -- better navigation, with Telescope, Harpoon and Neo-tree
   require('pauloo27.plugins.appearence'), -- nice looking vim
   require('pauloo27.plugins.copilot'),    -- copilot integration
