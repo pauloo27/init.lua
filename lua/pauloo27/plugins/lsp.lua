@@ -1,5 +1,3 @@
-local map = vim.api.nvim_set_keymap
-local silentOps = { noremap = true, silent = true }
 local lazy_event = require('pauloo27.plugins.loader').lazy_event
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
