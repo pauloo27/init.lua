@@ -6,10 +6,13 @@ local lazy_event = require('pauloo27.plugins.loader').lazy_event
 map('n', '<C-t>', '<cmd>Neotree focus<CR>', defaultOpts)
 map('n', 'T', '<cmd>Neotree toggle<CR>', defaultOpts)
 
+map('n', '<leader>1', "<cmd>:bprevious<CR>", defaultOpts)
+map('n', '<leader>2', "<cmd>:bnext<CR>", defaultOpts)
+
+
 local setup_harpoon = function()
   local harpoon = require("harpoon")
 
-  -- TODO: refact to use map()
   vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
   vim.keymap.set("n", "<leader>r", function() harpoon:list():remove() end)
   vim.keymap.set("n", "<leader>R", function() harpoon:list():clear() end)
@@ -56,14 +59,11 @@ local setup_telescope = function()
     }
   })
 
-  map('n', '<C-K>', "<cmd>lua require('telescope.builtin').find_files()<CR>", defaultOpts)
-  map('n', '<leader>g', "<cmd>lua require('telescope.builtin').live_grep()<CR>", defaultOpts)
-  map('n', '<leader>vc', "<cmd>lua require('telescope.builtin').find_files({search_dirs={'~/.config/nvim'}})<CR>",
-    defaultOpts)
-  map('n', '<leader>1', "<cmd>:bprevious<CR>", defaultOpts)
-  map('n', '<leader>2', "<cmd>:bnext<CR>", defaultOpts)
-  map('n', '<leader>0', "<cmd>lua require('telescope.builtin').buffers()<CR>", defaultOpts)
-  map('n', '<leader>p', "<cmd>Telescope projects<CR>", defaultOpts)
+  local b = require('telescope.builtin')
+
+  vim.keymap.set('n', '<C-K>', b.find_files)
+  vim.keymap.set('n', '<leader>g', b.live_grep)
+  vim.keymap.set('n', '<leader>0', b.buffers)
 end
 
 return {

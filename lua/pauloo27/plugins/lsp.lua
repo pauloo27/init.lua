@@ -2,16 +2,16 @@ local map = vim.api.nvim_set_keymap
 local silentOps = { noremap = true, silent = true }
 local lazy_event = require('pauloo27.plugins.loader').lazy_event
 
-map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', silentOps)
-map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', silentOps)
-map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', silentOps)
-map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', silentOps)
-map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', silentOps)
-map('n', '<leader>c', '<cmd>lua vim.lsp.buf.code_action()<CR>', silentOps)
-map('n', '<S-k>', '<cmd>lua vim.lsp.buf.hover()<CR>', silentOps)
-map('n', '<leader>f', "<cmd>lua require('extend.format').format()<CR>", silentOps)
-map('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', silentOps)
-map('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', silentOps)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
+vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover)
+vim.keymap.set('n', '<leader>f', require('pauloo27.plugins._.format').format)
+vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev)
 
 return {
   { 'neovim/nvim-lspconfig',    event = lazy_event },
