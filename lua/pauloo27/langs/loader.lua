@@ -11,7 +11,6 @@ return {
     registered_langs = langs
   end,
   load_langs = function()
-    local cmp_on_attach = require('pauloo27.plugins._.cmp').on_attach
     local capabilities = require('pauloo27.plugins._.cmp').capabilities
 
     local cursor_hold_on_attach = function(client, bufnr)
@@ -38,7 +37,6 @@ return {
 
 
     local function on_attach(client, bufnr)
-      cmp_on_attach(client, bufnr)
       cursor_hold_on_attach(client, bufnr)
     end
 
