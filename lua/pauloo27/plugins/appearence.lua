@@ -15,12 +15,6 @@ return {
     event = lazy_event,
   },
 
-  -- pair brackets 🧱
-  {
-    'HiPhish/rainbow-delimiters.nvim',
-    event = "BufEnter",
-  },
-
   -- bottom line status bar 📊
   {
     'nvim-lualine/lualine.nvim',
