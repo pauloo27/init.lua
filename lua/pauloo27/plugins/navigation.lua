@@ -61,7 +61,8 @@ local setup_telescope = function()
 
   local b = require('telescope.builtin')
 
-  vim.keymap.set('n', '<C-K>', b.find_files)
+  vim.keymap.set('n', '<C-K>',
+    function() b.find_files({ hidden = true, find_command = { 'rg', '--files', '--hidden', '--glob', '!.git/*' } }) end)
   vim.keymap.set('n', '<leader>g', b.live_grep)
   vim.keymap.set('n', '<leader>0', b.buffers)
 end
