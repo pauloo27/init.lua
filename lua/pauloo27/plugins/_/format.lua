@@ -2,10 +2,10 @@ local util = require('vim.lsp.util')
 
 local select_best_client = function(on_choice)
   local method = 'textDocument/formatting'
-  local clients = vim.tbl_values(vim.lsp.get_clients())
-  clients = vim.tbl_filter(function(client)
-    return client.name == 'eslint' or client.supports_method(method)
-  end, clients)
+  local clients = vim.tbl_values(vim.lsp.get_clients({
+    bufnr = vim.api.nvim_get_current_buf(),
+    method = method,
+  }))
   -- better UX when choices are always in the same order (between restarts)
   table.sort(clients, function(a, b)
     return a.name < b.name
