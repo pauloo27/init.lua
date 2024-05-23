@@ -28,7 +28,12 @@ return {
         filetype = format.ft_config,
       })
 
-      vim.cmd("autocmd BufWritePost * lua require('pauloo27.plugins._.format').format({}, true)")
+      vim.api.nvim_create_autocmd('BufWritePost', {
+        pattern = '*',
+        callback = function()
+          format.format({}, true)
+        end
+      })
     end
   },
 }
