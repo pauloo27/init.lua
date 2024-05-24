@@ -21,9 +21,9 @@ register_langs({
 
 -- prepare the plugin manager (lazy.nvim)
 local load_plugins = require('pauloo27.plugins.loader').load
+
 load_plugins({
   require('pauloo27.plugins.lsp'),        -- basic lsp support
-  require('pauloo27.misc.gf'),            -- go to file under cursor in other window
   require('pauloo27.plugins.navigation'), -- better navigation, with Telescope, Harpoon and Neo-tree
   require('pauloo27.plugins.appearence'), -- nice looking vim
   require('pauloo27.plugins.copilot'),    -- copilot integration
@@ -31,6 +31,9 @@ load_plugins({
   require('pauloo27.plugins.wakatime'),   -- track coding time
   require('pauloo27.plugins.git'),        -- git integration
 })
+
+require('pauloo27.misc.gf') -- go to file under cursor in other window
+require('pauloo27.misc.highlight_on_hover') -- go to file under cursor in other window
 
 -- load the lang just after the plugins are loaded
 load_langs()
