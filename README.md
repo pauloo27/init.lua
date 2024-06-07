@@ -1,3 +1,12 @@
 # init.lua
 
-Just my personal nvim config.
+```fix
+ ----------------------------------
+< My personal Neovim configuration >
+ ----------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+  ```

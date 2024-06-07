@@ -9,6 +9,8 @@ local lang_loader = require('pauloo27.langs.loader')
 local load_langs = lang_loader.load_langs
 local register_langs = lang_loader.register_langs
 
+-- i only did it this way so i can have the toggle languages and
+-- plugins per computer, since I use this config for personal and work
 register_langs({
   require('pauloo27.langs.lua'),       -- lua support (usefull for nvim config)
   require('pauloo27.langs.go'),        -- go support
