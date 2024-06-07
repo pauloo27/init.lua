@@ -1,4 +1,6 @@
 return {
+  -- treesitter parser for lua is a must for treesitter, so it's included
+  -- in the treesitter config, not here
   load = function(on_attach)
     require('lspconfig').lua_ls.setup({
       on_attach = on_attach,

@@ -34,6 +34,9 @@ local w_prettierd = function(lang)
 end
 
 return {
+  treesitter = {
+    ensure_installed = { 'typescript', 'javascript' },
+  },
   load_format = function()
     local set_ft_config = require('pauloo27.plugins._.format').set_ft_config
     set_ft_config('javascript', {

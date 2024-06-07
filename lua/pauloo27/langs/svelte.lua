@@ -1,4 +1,7 @@
 return {
+  treesitter = {
+    ensure_installed = { 'svelte' },
+  },
   load_format = function()
     local set_ft_config = require('pauloo27.plugins._.format').set_ft_config
 
