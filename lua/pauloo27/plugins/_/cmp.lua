@@ -72,5 +72,4 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
   capabilities = capabilities,
-  on_attach = on_attach,
 }
