@@ -1,6 +1,12 @@
 local lazy_event = require('pauloo27.plugins.loader').lazy_event
 
 return {
+  -- TODO comments tracker
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}
+  },
   -- vim inside of vim? no way! 🤯
   { 'samjwill/nvim-unception', event = lazy_event },
   -- treesitter 🌳
