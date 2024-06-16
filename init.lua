@@ -35,7 +35,7 @@ load_plugins({
 })
 
 require('pauloo27.misc.gf')                 -- go to file under cursor in other window
-require('pauloo27.misc.highlight_on_hover') -- go to file under cursor in other window
+require('pauloo27.misc.highlight_on_hover') -- highlight token under cursor
 
 -- load the lang just after the plugins are loaded
 load_langs()
