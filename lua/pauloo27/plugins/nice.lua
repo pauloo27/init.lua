@@ -3,7 +3,8 @@ local lazy_event = require('pauloo27.plugins.loader').lazy_event
 return {
   -- TODO comments tracker
   {
-    "folke/todo-comments.nvim",
+    "pauloo27/todo-comments.nvim",
+    branch = "feat/comments_only_per_ft",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       colors = {
