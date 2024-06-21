@@ -1,4 +1,5 @@
 local lazy_event = require('pauloo27.plugins.loader').lazy_event
+local auto_import = require('pauloo27.plugins._.auto_import')
 
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
@@ -6,6 +7,7 @@ vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
 vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>i', auto_import)
 vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>f', require('pauloo27.plugins._.format').format)
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next)
