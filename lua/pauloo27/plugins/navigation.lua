@@ -3,8 +3,8 @@ local defaultOpts = { noremap = true }
 local lazy_event = require('pauloo27.plugins.loader').lazy_event
 
 -- neo tree (file tree)
-map('n', '<C-t>', '<cmd>Neotree focus<CR>', defaultOpts)
-map('n', 'T', '<cmd>Neotree toggle<CR>', defaultOpts)
+map('n', '<C-t>', '<cmd>Neotree toggle<CR>', defaultOpts)
+vim.keymap.set("n", "T", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
 
 map('n', '<leader>1', "<cmd>:bprevious<CR>", defaultOpts)
 map('n', '<leader>2', "<cmd>:bnext<CR>", defaultOpts)
@@ -83,6 +83,12 @@ return {
     lazy = true,
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = setup_telescope,
+  },
+
+  -- file browser on telescope 📁
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
 
   -- file tree 🌲
