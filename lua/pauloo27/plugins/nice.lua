@@ -26,8 +26,21 @@ return {
       },
     }
   },
+
   -- vim inside of vim? no way! 🤯
   { 'samjwill/nvim-unception', event = lazy_event },
+
+  -- debugger 🐛🔍️
+  { 'mfussenegger/nvim-dap',   event = lazy_event },
+  {
+    'leoluz/nvim-dap-go',
+    event = lazy_event,
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('dap-go').setup()
+    end
+  },
+
   -- treesitter 🌳
   {
     "nvim-treesitter/nvim-treesitter",
