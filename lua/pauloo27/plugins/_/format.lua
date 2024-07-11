@@ -1,7 +1,7 @@
-local util = require('vim.lsp.util')
+local util = require("vim.lsp.util")
 
 local select_best_client = function(on_choice)
-  local method = 'textDocument/formatting'
+  local method = "textDocument/formatting"
   local clients = vim.tbl_values(vim.lsp.get_clients({
     bufnr = vim.api.nvim_get_current_buf(),
     method = method,
@@ -34,9 +34,9 @@ M.format = function(options, write)
   local ft = vim.bo.filetype
   if M.ft_config[ft] ~= nil then
     if write then
-      vim.cmd('FormatWrite')
+      vim.cmd("FormatWrite")
     else
-      vim.cmd('Format')
+      vim.cmd("Format")
     end
 
     return
@@ -48,8 +48,8 @@ M.format = function(options, write)
       return
     end
 
-    return client.request('textDocument/formatting', params, nil, bufnr)
+    return client.request("textDocument/formatting", params, nil, bufnr)
   end)
 end
 
-return M;
+return M

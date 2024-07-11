@@ -14,7 +14,7 @@ return {
     registered_langs = langs
   end,
   load_langs = function()
-    local capabilities = require('pauloo27.plugins._.cmp').capabilities
+    local capabilities = require("pauloo27.plugins._.cmp").capabilities
 
     local function on_attach(_client, _bufnr)
       -- empty for now :)
@@ -23,5 +23,5 @@ return {
     for _, lang in ipairs(registered_langs) do
       lang.load(on_attach, capabilities)
     end
-  end
+  end,
 }

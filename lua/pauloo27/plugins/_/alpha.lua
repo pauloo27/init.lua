@@ -12,12 +12,17 @@ local header = {
 }
 
 local version = vim.version()
-local version_line = 'Version ' .. version.major .. '.' .. version.minor .. '.' .. version.patch
+local version_line = "Version "
+  .. version.major
+  .. "."
+  .. version.minor
+  .. "."
+  .. version.patch
 
 math.randomseed(os.time())
 
-local spaces = string.rep(' ', math.floor((#header[1] - #version_line) / 2))
-table.insert(header, '')
+local spaces = string.rep(" ", math.floor((#header[1] - #version_line) / 2))
+table.insert(header, "")
 table.insert(header, spaces .. version_line)
 
 dashboard.section.header.val = header

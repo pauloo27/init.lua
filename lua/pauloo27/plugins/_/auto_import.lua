@@ -22,7 +22,7 @@ return function()
   end
 
   local auto_import_per_ft = {
-    ['typescript'] = ts_auto_import,
+    ["typescript"] = ts_auto_import,
   }
 
   local handler = auto_import_per_ft[ft]

@@ -1,4 +1,5 @@
-local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
+local group =
+  vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
 
 local has_highlight_support = function()
   local clients = vim.lsp.get_clients({
@@ -15,7 +16,7 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
     if has_highlight_support() then
       vim.lsp.buf.document_highlight()
     end
-  end
+  end,
 })
 
 vim.api.nvim_create_autocmd("CursorMoved", {
@@ -24,5 +25,5 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     if has_highlight_support() then
       vim.lsp.buf.clear_references()
     end
-  end
+  end,
 })

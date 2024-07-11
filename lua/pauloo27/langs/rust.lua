@@ -1,17 +1,17 @@
 return {
   treesitter = {
-    ensure_installed = { 'rust' },
+    ensure_installed = { "rust" },
   },
   load = function(on_attach)
-    require('lspconfig').rust_analyzer.setup({
+    require("lspconfig").rust_analyzer.setup({
       on_attach = on_attach,
       settings = {
-        ['rust-analyzer'] = {
+        ["rust-analyzer"] = {
           check = {
-            command = 'clippy',
-          }
-        }
+            command = "clippy",
+          },
+        },
       },
     })
-  end
+  end,
 }

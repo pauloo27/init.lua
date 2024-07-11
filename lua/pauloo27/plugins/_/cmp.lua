@@ -4,7 +4,12 @@ local o = vim.o
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  return col ~= 0
+    and vim.api
+        .nvim_buf_get_lines(0, line - 1, line, true)[1]
+        :sub(col, col)
+        :match("%s")
+      == nil
 end
 
 o.completeopt = "menuone,noselect"
@@ -13,8 +18,8 @@ cmp.setup({
   preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
-      require 'luasnip'.lsp_expand(args.body)
-    end
+      require("luasnip").lsp_expand(args.body)
+    end,
   },
   duplicates = {
     nvim_lsp = 1,
@@ -31,9 +36,9 @@ cmp.setup({
     native_menu = false,
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, { name = 'buffer' }),
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+  }, { name = "buffer" }),
   mapping = {
     ["<Up>"] = cmp.mapping.select_prev_item(),
     ["<Down>"] = cmp.mapping.select_next_item(),
@@ -41,10 +46,10 @@ cmp.setup({
     ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-    ["<C-e>"] = cmp.mapping {
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
-    },
+    }),
     ["<CR>"] = cmp.mapping.confirm(),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -67,7 +72,9 @@ cmp.setup({
   },
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 return {
