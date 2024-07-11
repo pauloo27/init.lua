@@ -1,4 +1,13 @@
 return {
+  load_format = function()
+    local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
+
+    set_ft_config("lua", {
+      function()
+        return require("formatter.filetypes.lua").stylua()
+      end,
+    })
+  end,
   -- treesitter parser for lua is a must for treesitter, so it's included
   -- in the treesitter config, not here
   load = function(on_attach)
