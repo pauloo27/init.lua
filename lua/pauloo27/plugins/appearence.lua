@@ -7,7 +7,7 @@ local apply_theme = function()
   then
     vim.cmd("colorscheme darkblue")
   else
-    vim.cmd("colorscheme catppuccin")
+    vim.cmd("colorscheme catppuccin-latte")
   end
 
   -- transparent background
