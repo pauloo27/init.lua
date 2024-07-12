@@ -1,8 +1,8 @@
-local modeAbbr = function()
+local mode_abbr = function()
   return vim.api.nvim_get_mode().mode
 end
 
-local fullFileName = function()
+local full_file_name = function()
   return vim.fn.expand("%")
 end
 
@@ -17,9 +17,9 @@ require("lualine").setup({
     globalstatus = false,
   },
   sections = {
-    lualine_a = { modeAbbr },
+    lualine_a = { mode_abbr },
     lualine_b = { "branch", "diff", "diagnostics" },
-    lualine_c = { fullFileName },
+    lualine_c = { full_file_name },
     lualine_x = { "encoding" },
     lualine_y = { "filetype" },
     lualine_z = { "location" },
