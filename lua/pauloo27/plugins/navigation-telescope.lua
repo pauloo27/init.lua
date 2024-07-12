@@ -53,7 +53,6 @@ local get_telescope_file_browser_opts = function()
   end
 
   return {
-    hijack_netrw = true,
     git_icons = git_icons,
     mappings = {
       ["i"] = insertModeMappings,
@@ -68,7 +67,7 @@ local setup_telescope = function()
       path_display = { "truncate" },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-      color_devicons = true,
+      color_devicons = false,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
     },
     pickers = {
