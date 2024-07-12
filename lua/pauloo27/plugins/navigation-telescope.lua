@@ -1,3 +1,13 @@
+local git_icons = {
+  added = "+",
+  changed = "~",
+  copied = ">",
+  deleted = "-",
+  renamed = "»",
+  unmerged = "‡",
+  untracked = "?",
+}
+
 local get_telescope_file_browser_opts = function()
   local fb_actions = require("telescope._extensions.file_browser.actions")
   local Path = require("plenary.path")
@@ -44,6 +54,7 @@ local get_telescope_file_browser_opts = function()
 
   return {
     hijack_netrw = true,
+    git_icons = git_icons,
     mappings = {
       ["i"] = insertModeMappings,
       ["n"] = normalModeMappings,
@@ -59,6 +70,11 @@ local setup_telescope = function()
       generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
       color_devicons = true,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+    },
+    pickers = {
+      git_status = {
+        git_icons = git_icons,
+      },
     },
     extensions = {
       file_browser = get_telescope_file_browser_opts(),
