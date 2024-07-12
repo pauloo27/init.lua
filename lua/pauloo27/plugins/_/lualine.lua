@@ -6,10 +6,32 @@ local full_file_name = function()
   return vim.fn.expand("%")
 end
 
+local colors = {
+  bg_main = "#fffaf3",
+  bg_alt = "#f4ede8",
+  fg_main = "#9893a5",
+  fg_alt = "#575279",
+}
+
+local mode_colors = {
+  a = { bg = colors.bg_alt, fg = colors.fg_main, gui = "bold" },
+  b = { bg = colors.bg_main, fg = colors.fg_alt },
+  c = { bg = colors.bg_main, fg = colors.fg_main },
+}
+
+local theme = {
+  normal = mode_colors,
+  insert = mode_colors,
+  visual = mode_colors,
+  replace = mode_colors,
+  command = mode_colors,
+  inactive = mode_colors,
+}
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
-    theme = "auto",
+    theme = theme,
     component_separators = { left = "|", right = "|" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = {},

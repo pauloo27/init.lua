@@ -6,7 +6,7 @@ local apply_theme = function()
   if os.getenv("USER") == "root" then
     vim.cmd("colorscheme darkblue")
   else
-    vim.cmd("colorscheme catppuccin-latte")
+    vim.cmd("colorscheme rose-pine-dawn")
   end
 
   -- transparent background
@@ -20,8 +20,8 @@ defer(apply_theme)
 return {
   -- catppuccin theme 😸
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "rose-pine/neovim",
+    name = "rose-pine",
     lazy = true,
     priority = 1000,
   },
