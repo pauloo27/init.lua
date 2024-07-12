@@ -15,8 +15,8 @@ local colors = {
 
 local mode_colors = {
   a = { bg = colors.bg_alt, fg = colors.fg_main, gui = "bold" },
-  b = { bg = colors.bg_main, fg = colors.fg_alt },
-  c = { bg = colors.bg_main, fg = colors.fg_main },
+  b = { bg = colors.bg_alt, fg = colors.fg_alt },
+  c = { bg = colors.bg_alt, fg = colors.fg_main },
 }
 
 local theme = {
@@ -31,6 +31,7 @@ local theme = {
 require("lualine").setup({
   options = {
     icons_enabled = true,
+    colored = false,
     theme = theme,
     component_separators = { left = "|", right = "|" },
     section_separators = { left = "", right = "" },
