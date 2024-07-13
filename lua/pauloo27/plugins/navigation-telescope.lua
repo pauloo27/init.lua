@@ -62,7 +62,8 @@ local get_telescope_file_browser_opts = function()
 end
 
 local setup_telescope = function()
-  require("telescope").setup({
+  local telescope = require("telescope")
+  telescope.setup({
     defaults = {
       path_display = { "truncate" },
       file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -88,13 +89,23 @@ local setup_telescope = function()
       find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     })
   end)
+
   vim.keymap.set("n", "<leader>g", b.live_grep)
   vim.keymap.set("n", "<leader>0", b.buffers)
-  vim.keymap.set(
-    "n",
-    "T",
-    ":Telescope file_browser path=%:p:h select_buffer=true<CR>"
-  )
+  vim.keymap.set("n", "<leader>f", function()
+    telescope.extensions.file_browser.file_browser({
+      cwd = vim.fn.expand("%:p:h"),
+      respect_gitignore = true,
+      use_fd = true,
+    })
+  end)
+  vim.keymap.set("n", "<leader>F", function()
+    telescope.extensions.file_browser.file_browser({
+      files = false,
+      respect_gitignore = true,
+      use_fd = true,
+    })
+  end)
 end
 
 return {
