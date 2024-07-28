@@ -29,3 +29,6 @@ vim.o.wildignore = vim.o.wildignore .. "*/node_modules/*"
 -- keep undo history in the disk so it persists between sessions
 vim.o.undofile = true
 vim.o.undodir = vim.fn.expand("~/.cache/undodir")
+
+-- something related to color
+vim.o.termguicolors = true

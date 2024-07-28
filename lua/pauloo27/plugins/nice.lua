@@ -34,6 +34,14 @@ return {
   -- vim inside of vim? no way! 🤯
   { "samjwill/nvim-unception", event = lazy_event },
 
+  -- show colors in your code 🎨
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
+
   -- debugger 🐛🔍️
   { "mfussenegger/nvim-dap", event = lazy_event },
   {
