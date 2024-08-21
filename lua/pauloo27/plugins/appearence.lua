@@ -18,7 +18,7 @@ end
 defer(apply_theme)
 
 return {
-  -- catppuccin theme 😸
+  -- rose pine theme 🌹
   {
     "rose-pine/neovim",
     name = "rose-pine",
