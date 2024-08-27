@@ -6,7 +6,7 @@ local apply_theme = function()
   if os.getenv("USER") == "root" then
     vim.cmd("colorscheme darkblue")
   else
-    vim.cmd("colorscheme rose-pine-dawn")
+    vim.cmd("colorscheme rose-pine-moon")
   end
 
   -- transparent background
@@ -39,6 +39,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = lazy_event,
     config = function()
       require("pauloo27.plugins._.lualine")
     end,

@@ -6,17 +6,33 @@ local full_file_name = function()
   return vim.fn.expand("%")
 end
 
+local get_color = function(name, type, fallback)
+  local hl_info = vim.api.nvim_get_hl(0, {
+    name = name,
+  })
+
+  if hl_info == nil then
+    return fallback
+  end
+
+  local color = hl_info[type]
+
+  if color then
+    return string.format("#%06x", color)
+  else
+    return fallback
+  end
+end
 local colors = {
-  bg_main = "#fffaf3",
-  bg_alt = "#f4ede8",
-  fg_main = "#9893a5",
-  fg_alt = "#575279",
+  bg_main = get_color("StatusLine", "bg", "#ff0000"),
+  fg_main = get_color("Normal", "fg", "#ff0000"),
+  fg_alt = get_color("StatusLine", "fg", "#ff0000"),
 }
 
 local mode_colors = {
-  a = { bg = colors.bg_alt, fg = colors.fg_main, gui = "bold" },
-  b = { bg = colors.bg_alt, fg = colors.fg_alt },
-  c = { bg = colors.bg_alt, fg = colors.fg_main },
+  a = { bg = colors.bg_main, fg = colors.fg_main, gui = "bold" },
+  b = { bg = colors.bg_main, fg = colors.fg_alt },
+  c = { bg = colors.bg_main, fg = colors.fg_main },
 }
 
 local theme = {
