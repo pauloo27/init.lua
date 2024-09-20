@@ -18,7 +18,13 @@ local select_best_client = function(on_choice)
   end
 end
 
-local M = {}
+local M = {
+  disable_formatting = false,
+}
+
+vim.api.nvim_create_user_command("ToggleFormatting", function()
+  M.disable_formatting = not M.disable_formatting
+end, {})
 
 M.ft_config = {}
 
@@ -27,6 +33,10 @@ M.set_ft_config = function(ft, opts)
 end
 
 M.format = function(options, write)
+  if M.disable_formatting then
+    return
+  end
+
   local params = util.make_formatting_params(options)
   local bufnr = vim.api.nvim_get_current_buf()
 
