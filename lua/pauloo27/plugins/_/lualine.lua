@@ -25,13 +25,13 @@ local get_color = function(name, type, fallback)
 end
 local colors = {
   bg_main = get_color("StatusLine", "bg", "#ff0000"),
-  fg_main = get_color("Normal", "fg", "#ff0000"),
-  fg_alt = get_color("StatusLine", "fg", "#ff0000"),
+  fg_main = get_color("StatusLine", "fg", "#ff0000"),
+  --fg_alt = get_color("Normal", "fg", "#ff0000"),
 }
 
 local mode_colors = {
   a = { bg = colors.bg_main, fg = colors.fg_main, gui = "bold" },
-  b = { bg = colors.bg_main, fg = colors.fg_alt },
+  b = { bg = colors.bg_main, fg = colors.fg_main },
   c = { bg = colors.bg_main, fg = colors.fg_main },
 }
 
