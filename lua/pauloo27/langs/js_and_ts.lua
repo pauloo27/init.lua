@@ -64,7 +64,7 @@ return {
     })
   end,
   load = function(on_attach)
-    require("lspconfig").tsserver.setup({ on_attach = on_attach })
+    require("lspconfig").ts_ls.setup({ on_attach = on_attach })
     require("lspconfig").tailwindcss.setup({ on_attach = on_attach })
   end,
 }
