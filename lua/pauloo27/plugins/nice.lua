@@ -31,6 +31,24 @@ return {
     },
   },
 
+  -- function signature 🤘
+  {
+    "ray-x/lsp_signature.nvim",
+    event = lazy_event,
+    opts = {
+      hint_prefix = {
+        above = "↙ ",
+        current = "← ",
+        below = "↖ ",
+      },
+      doc_lines = 0,
+      floating_window = false,
+    },
+    config = function(_, opts)
+      require("lsp_signature").setup(opts)
+    end,
+  },
+
   -- vim inside of vim? no way! 🤯
   { "samjwill/nvim-unception", event = lazy_event },
 
