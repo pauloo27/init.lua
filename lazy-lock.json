@@ -23,6 +23,7 @@
   "rose-pine": { "branch": "main", "commit": "07a887a7bef4aacea8c7caebaf8cbf808cdc7a8e" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "626998e5c1b71c130d8bc6cf7abb6709b98287bb" },
   "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
+  "tmux.nvim": { "branch": "main", "commit": "307bad95a1274f7288aaee09694c25c8cbcd6f1a" },
   "todo-comments.nvim": { "branch": "feat/comments_only_per_ft", "commit": "4b0902ebd0baeeaf9f90893561015f2f066ca34e" },
   "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
   "vim-polyglot": { "branch": "master", "commit": "692e359ad9344d6e69626131f5c96743560e4d53" },

@@ -49,6 +49,14 @@ return {
     end,
   },
 
+  -- tmux <-> nvim integration 🥰
+  {
+    "aserowy/tmux.nvim",
+    config = function()
+      return require("tmux").setup()
+    end,
+  },
+
   -- vim inside of vim? no way! 🤯
   { "samjwill/nvim-unception", event = lazy_event },
 
