@@ -88,8 +88,16 @@ return {
       local registered_langs =
         require("pauloo27.langs.loader").get_registered_langs()
 
-      local ensure_installed =
-        { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" }
+      local ensure_installed = {
+        "c",
+        "lua",
+        "vim",
+        "vimdoc",
+        "query",
+        "markdown",
+        "markdown_inline",
+        "sql",
+      }
 
       for _, lang in ipairs(registered_langs) do
         if lang.treesitter ~= nil then
