@@ -21,6 +21,7 @@ register_langs({
   require("pauloo27.langs.elixir"), -- elixir support
   require("pauloo27.langs.c"), -- c support
   require("pauloo27.langs.nix"), -- nix support
+  require("pauloo27.langs.gleam"), -- gleam support
 })
 
 -- prepare the plugin manager (lazy.nvim)
