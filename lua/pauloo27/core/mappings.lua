@@ -1,6 +1,9 @@
 local map = vim.api.nvim_set_keymap
 local defaultOpts = { noremap = true }
 
+-- leader key
+vim.g.mapleader = ','
+
 -- pressing <Esc> inside term will enter normal mode, pressing <C-[> will send
 -- <Esc> to the terminal
 map("t", "<Esc>", "<C-\\><C-n>", defaultOpts)
