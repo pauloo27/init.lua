@@ -4,13 +4,13 @@ local gof = function()
   local cword = vim.fn.expand("<cWORD>")
 
   -- trim [] around the word
-  cword = cword:gsub("^%[", ""):gsub("%]$", "")
+  cword = cword:gsub("^%[(.-)%]$", "%1")
 
-  local st = string.find(cword, "\v\f+:%d+")
-  local en = string.match(cword, "\v\f+:%d+")
+  local st = cword:find("\v\f+:%d+")
+  local en = cword:match("\v\f+:%d+")
 
   if en and st then
-    cword = string.sub(cword, st, en - 1)
+    cword = cword:sub(st, en - 1)
   end
 
   local starting_window = vim.api.nvim_get_current_win()
