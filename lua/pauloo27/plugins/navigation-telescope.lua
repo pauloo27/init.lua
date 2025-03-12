@@ -1,3 +1,5 @@
+local lazy_event = require("pauloo27.plugins.loader").lazy_event
+
 local git_icons = {
   added = "+",
   changed = "~",
@@ -120,6 +122,7 @@ return {
   -- file browser on telescope 📁
   {
     "nvim-telescope/telescope-file-browser.nvim",
+    event = lazy_event,
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
   },
 }

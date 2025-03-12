@@ -4,6 +4,7 @@ return {
   -- TODO comments tracker
   {
     "pauloo27/todo-comments.nvim",
+    event = lazy_event,
     branch = "feat/comments_only_per_ft",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
@@ -52,6 +53,7 @@ return {
   -- tmux <-> nvim integration 🥰
   {
     "aserowy/tmux.nvim",
+    event = lazy_event,
     config = function()
       return require("tmux").setup()
     end,
@@ -63,6 +65,7 @@ return {
   -- show colors in your code 🎨
   {
     "norcalli/nvim-colorizer.lua",
+    event = lazy_event,
     config = function()
       require("colorizer").setup()
     end,

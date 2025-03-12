@@ -3,6 +3,7 @@ local lazy_event = require("pauloo27.plugins.loader").lazy_event
 return {
   {
     "leath-dub/snipe.nvim",
+    event = lazy_event,
     config = function()
       local snipe = require("snipe")
       snipe.setup({
