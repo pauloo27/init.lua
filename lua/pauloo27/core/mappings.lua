@@ -2,7 +2,7 @@ local map = vim.api.nvim_set_keymap
 local defaultOpts = { noremap = true }
 
 -- leader key
-vim.g.mapleader = ','
+vim.g.mapleader = ","
 
 -- pressing <Esc> inside term will enter normal mode, pressing <C-[> will send
 -- <Esc> to the terminal
@@ -12,6 +12,10 @@ map("t", "<C-[>", "<Esc>", defaultOpts)
 -- clipboard
 map("v", "<leader>cc", '"+y<CR>', defaultOpts)
 map("v", "<leader>cm", '"*y<CR>', defaultOpts)
+vim.keymap.set("n", "<F3>", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+  vim.fn.setreg('"', vim.fn.expand("%:p"))
+end)
 
 -- "sudo" write
 map(
