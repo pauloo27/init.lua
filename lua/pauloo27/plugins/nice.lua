@@ -35,12 +35,11 @@ return {
   -- function signature 🤘
   {
     "ray-x/lsp_signature.nvim",
-    event = lazy_event,
     opts = {
       hint_prefix = {
-        above = "↙ ",
+        above = "↓ ",
         current = "← ",
-        below = "↖ ",
+        below = "↑ ",
       },
       doc_lines = 0,
       floating_window = false,
