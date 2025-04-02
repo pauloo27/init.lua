@@ -10,8 +10,12 @@ vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>i", auto_import)
 vim.keymap.set("n", "<S-k>", vim.lsp.buf.hover)
 vim.keymap.set("n", "<leader>f", require("pauloo27.plugins._.format").format)
-vim.keymap.set("n", "<C-n>", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<C-p>", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "<C-n>", function()
+  vim.diagnostic.jump({ count = 1, float = true })
+end)
+vim.keymap.set("n", "<C-p>", function()
+  vim.diagnostic.jump({ count = -1, float = true })
+end)
 
 return {
   { "neovim/nvim-lspconfig", event = lazy_event },
