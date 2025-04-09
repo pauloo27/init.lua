@@ -84,7 +84,6 @@ return {
   -- treesitter 🌳
   {
     "nvim-treesitter/nvim-treesitter",
-    event = lazy_event,
     build = ":TSUpdate",
     config = function()
       local registered_langs =
@@ -92,6 +91,8 @@ return {
 
       local ensure_installed = {
         "c",
+        "http", -- rest.nvim
+        "json",
         "lua",
         "vim",
         "vimdoc",
