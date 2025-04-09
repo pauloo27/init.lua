@@ -35,7 +35,7 @@ load_plugins({
   require("pauloo27.plugins.nice"), -- some nice to have stuff
   require("pauloo27.plugins.wakatime"), -- track coding time
   require("pauloo27.plugins.git"), -- git integration
-  --require("pauloo27.plugins.tex"), -- basic latex support
+  require("pauloo27.plugins.tex"), -- basic latex support
 })
 
 require("pauloo27.misc.gf") -- go to file under cursor in other window
