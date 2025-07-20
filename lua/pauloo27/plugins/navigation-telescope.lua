@@ -11,6 +11,17 @@ local git_icons = {
 }
 
 local get_telescope_file_browser_opts = function()
+  vim.cmd([[
+  highlight TelescopeNormal guibg=NONE ctermbg=NONE
+  highlight TelescopeBorder guibg=NONE ctermbg=NONE
+  highlight TelescopePromptNormal guibg=NONE ctermbg=NONE
+  highlight TelescopePromptBorder guibg=NONE ctermbg=NONE
+  highlight TelescopeResultsNormal guibg=NONE ctermbg=NONE
+  highlight TelescopeResultsBorder guibg=NONE ctermbg=NONE
+  highlight TelescopePreviewNormal guibg=NONE ctermbg=NONE
+  highlight TelescopePreviewBorder guibg=NONE ctermbg=NONE
+]])
+
   local fb_actions = require("telescope._extensions.file_browser.actions")
   local Path = require("plenary.path")
 
