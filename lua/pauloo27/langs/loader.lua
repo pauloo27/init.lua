@@ -6,8 +6,8 @@ return {
   end,
   register_langs = function(langs)
     for _, lang in ipairs(langs) do
-      if lang.load_format ~= nil then
-        lang.load_format()
+      if lang.pre_register ~= nil then
+        lang.pre_register()
       end
     end
 

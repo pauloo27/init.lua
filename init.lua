@@ -14,8 +14,10 @@ local register_langs = lang_loader.register_langs
 register_langs({
   require("pauloo27.langs.lua"), -- lua support (usefull for nvim config)
   require("pauloo27.langs.go"), -- go support
+  require("pauloo27.langs.templ"), -- go templ support
   require("pauloo27.langs.js_and_ts"), -- js and ts support
   require("pauloo27.langs.svelte"), -- svelte support
+  require("pauloo27.langs.tailwindcss"), -- js and ts support
   require("pauloo27.langs.java"), -- java support
   require("pauloo27.langs.rust"), -- rust support
   require("pauloo27.langs.elixir"), -- elixir support

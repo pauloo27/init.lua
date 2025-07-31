@@ -21,9 +21,9 @@ end
 local w_eslint_d = function(lang)
   return function()
     if
-      has_file_in_root(".eslintrc.json")
-      or has_file_in_root(".eslintrc.js")
-      or has_file_in_root(".eslintrc.cjs")
+        has_file_in_root(".eslintrc.json")
+        or has_file_in_root(".eslintrc.js")
+        or has_file_in_root(".eslintrc.cjs")
     then
       return require("formatter.filetypes." .. lang).eslint_d()
     end
@@ -35,9 +35,9 @@ end
 local w_prettierd = function(lang)
   return function()
     if
-      has_file_in_root(".prettierrc")
-      or has_file_in_root(".prettierrc.js")
-      or has_file_in_root(".prettierrc.json")
+        has_file_in_root(".prettierrc")
+        or has_file_in_root(".prettierrc.js")
+        or has_file_in_root(".prettierrc.json")
     then
       return require("formatter.filetypes." .. lang).prettierd()
     end
@@ -48,9 +48,9 @@ end
 
 return {
   treesitter = {
-    ensure_installed = { "typescript", "javascript" },
+    ensure_installed = { "typescript", "javascript", "jsdoc" },
   },
-  load_format = function()
+  pre_load = function()
     local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
 
     set_ft_config("javascript", {
@@ -76,6 +76,9 @@ return {
     })
   end,
   load = function(on_attach)
+    local add_ft = require("pauloo27.langs.tailwindcss").add_ft
+    add_ft({ "javascriptreact", "typescriptreact", "html" })
+
     local lspconfig = require("lspconfig")
     lspconfig.denols.setup({
       root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
@@ -96,7 +99,7 @@ return {
       on_attach = on_attach,
       root_dir = function(filename, bufnr)
         local denoRootDir =
-          lspconfig.util.root_pattern("deno.json", "deno.json")(filename)
+            lspconfig.util.root_pattern("deno.json", "deno.json")(filename)
         if denoRootDir then
           return nil
         end
@@ -105,7 +108,5 @@ return {
       end,
       single_file_support = false,
     })
-
-    require("lspconfig").tailwindcss.setup({ on_attach = on_attach })
   end,
 }

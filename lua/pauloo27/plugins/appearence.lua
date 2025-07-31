@@ -29,12 +29,6 @@ return {
   -- icons and stuff 🕸️
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
-  -- syntax highlighting 🌈
-  {
-    "sheerun/vim-polyglot",
-    event = lazy_event,
-  },
-
   -- bottom line status bar 📊
   {
     "nvim-lualine/lualine.nvim",

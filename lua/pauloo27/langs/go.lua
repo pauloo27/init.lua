@@ -2,7 +2,7 @@ return {
   treesitter = {
     ensure_installed = { "go" },
   },
-  load_format = function()
+  pre_load = function()
     local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
 
     set_ft_config("go", {
