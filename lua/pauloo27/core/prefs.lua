@@ -3,7 +3,7 @@
 -- line numbers
 vim.o.nu = true
 vim.o.rnu = true
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- enable mouse
 vim.o.mouse = "a"

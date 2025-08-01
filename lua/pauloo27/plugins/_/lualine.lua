@@ -30,10 +30,27 @@ local colors = {
 }
 
 local mode_colors = {
-  a = { bg = colors.bg_main, fg = colors.fg_main, gui = "bold" },
-  b = { bg = colors.bg_main, fg = colors.fg_main },
-  c = { bg = colors.bg_main, fg = colors.fg_main },
+  a = { fg = colors.fg_main, gui = "bold" },
+  b = { fg = colors.fg_main },
+  c = { fg = colors.fg_main },
 }
+
+local hl_groups = {
+  "StatusLine",
+  "StatusLineNC",
+  "StatusLineSeparator",
+  "StatusLineTerm",
+  "StatusLineTermNC",
+  "StatusLineModeNormal",
+  "StatusLineModeInsert",
+  "StatusLineModeVisual",
+  "StatusLineModeReplace",
+  "StatusLineModeCommand",
+}
+
+for _, group in ipairs(hl_groups) do
+  vim.api.nvim_set_hl(0, group, { bg = "none" })
+end
 
 local theme = {
   normal = mode_colors,
