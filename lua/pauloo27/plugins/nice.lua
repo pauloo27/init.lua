@@ -71,7 +71,7 @@ return {
   },
 
   -- debugger 🐛🔍️
-  { "mfussenegger/nvim-dap", event = lazy_event },
+  { "mfussenegger/nvim-dap",   event = lazy_event },
   {
     "leoluz/nvim-dap-go",
     event = lazy_event,
@@ -87,7 +87,7 @@ return {
     build = ":TSUpdate",
     config = function()
       local registered_langs =
-        require("pauloo27.langs.loader").get_registered_langs()
+          require("pauloo27.langs.loader").get_registered_langs()
 
       local ensure_installed = {
         "c",
@@ -112,7 +112,8 @@ return {
 
       require("nvim-treesitter.configs").setup({
         ensure_installed = ensure_installed,
-        highlight = {
+        auto_install     = true,
+        highlight        = {
           enable = true,
         },
       })
