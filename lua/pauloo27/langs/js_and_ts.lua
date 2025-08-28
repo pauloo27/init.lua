@@ -1,5 +1,5 @@
-local has_file_in_root = function(name)
-  local file = vim.fs.find(name, {
+local has_any_file_in_root = function(files)
+  local file = vim.fs.find(files, {
     upward = true,
     stop = vim.fs.normalize("~"),
     path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
@@ -8,54 +8,43 @@ local has_file_in_root = function(name)
   return #file >= 1
 end
 
-local w_denols = function(lang)
+local function make_formatter(formatter, lang)
   return function()
-    if has_file_in_root("deno.json") or has_file_in_root("deno.jsonc") then
-      return require("formatter.filetypes." .. lang).denofmt()
+    if has_any_file_in_root(formatter.files) then
+      return require("formatter.filetypes." .. lang)[formatter.name]()
     end
-
     return nil
   end
 end
 
-local w_biome = function(lang)
-  return function()
-    if has_file_in_root("biome.json") then
-      return require("formatter.filetypes." .. lang).biome()
-    end
+local denofmt = {
+  name = "denofmt",
+  files = { "deno.json", "deno.jsonc" },
+}
 
-    return nil
-  end
-end
+local biome = {
+  name = "biome",
+  files = { "biome.json" },
+}
 
-local w_eslint_d = function(lang)
-  return function()
-    if
-      has_file_in_root(".eslintrc.json")
-      or has_file_in_root(".eslintrc.js")
-      or has_file_in_root("eslint.config.mjs")
-      or has_file_in_root(".eslintrc.cjs")
-    then
-      return require("formatter.filetypes." .. lang).eslint_d()
-    end
+local eslint_d = {
+  name = "eslint_d",
+  files = {
+    ".eslintrc.json",
+    ".eslintrc.js",
+    "eslint.config.mjs",
+    ".eslintrc.cjs",
+  },
+}
 
-    return nil
-  end
-end
-
-local w_prettierd = function(lang)
-  return function()
-    if
-      has_file_in_root(".prettierrc")
-      or has_file_in_root(".prettierrc.js")
-      or has_file_in_root(".prettierrc.json")
-    then
-      return require("formatter.filetypes." .. lang).prettierd()
-    end
-
-    return nil
-  end
-end
+local prettierd = {
+  name = "prettierd",
+  files = {
+    ".prettierrc",
+    ".prettierrc.js",
+    ".prettierrc.json",
+  },
+}
 
 return {
   treesitter = {
@@ -64,30 +53,28 @@ return {
   pre_load = function()
     local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
 
-    set_ft_config("javascript", {
-      w_biome("javascript"),
-      w_eslint_d("javascript"),
-      w_prettierd("javascript"),
-    })
+    local use_format = function(filetypes, lang, formatters)
+      local opts = {}
+      for _, fomatter in ipairs(formatters) do
+        table.insert(opts, make_formatter(fomatter, lang))
+      end
 
-    set_ft_config("typescript", {
-      w_biome("typescript"),
-      w_eslint_d("typescript"),
-      w_prettierd("typescript"),
-      w_denols("typescript"),
-    })
+      for _, ft in ipairs(filetypes) do
+        set_ft_config(ft, opts)
+      end
+    end
 
-    set_ft_config("typescriptreact", {
-      w_biome("typescript"),
-      w_eslint_d("typescript"),
-      w_prettierd("typescript"),
-    })
+    use_format(
+      { "javascript", "javascriptreact" },
+      "javascript",
+      { biome, prettierd, eslint_d }
+    )
 
-    set_ft_config("javascriptreact", {
-      w_biome("javascript"),
-      w_eslint_d("javascript"),
-      w_prettierd("javascript"),
-    })
+    use_format(
+      { "typescript", "typescriptreact" },
+      "typescript",
+      { denofmt, biome, prettierd, eslint_d }
+    )
   end,
   load = function(on_attach)
     local add_ft = require("pauloo27.langs.tailwindcss").add_ft
