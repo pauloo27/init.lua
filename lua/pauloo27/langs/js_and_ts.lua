@@ -18,12 +18,23 @@ local w_denols = function(lang)
   end
 end
 
+local w_biome = function(lang)
+  return function()
+    if has_file_in_root("biome.json") then
+      return require("formatter.filetypes." .. lang).biome()
+    end
+
+    return nil
+  end
+end
+
 local w_eslint_d = function(lang)
   return function()
     if
-        has_file_in_root(".eslintrc.json")
-        or has_file_in_root(".eslintrc.js")
-        or has_file_in_root(".eslintrc.cjs")
+      has_file_in_root(".eslintrc.json")
+      or has_file_in_root(".eslintrc.js")
+      or has_file_in_root("eslint.config.mjs")
+      or has_file_in_root(".eslintrc.cjs")
     then
       return require("formatter.filetypes." .. lang).eslint_d()
     end
@@ -35,9 +46,9 @@ end
 local w_prettierd = function(lang)
   return function()
     if
-        has_file_in_root(".prettierrc")
-        or has_file_in_root(".prettierrc.js")
-        or has_file_in_root(".prettierrc.json")
+      has_file_in_root(".prettierrc")
+      or has_file_in_root(".prettierrc.js")
+      or has_file_in_root(".prettierrc.json")
     then
       return require("formatter.filetypes." .. lang).prettierd()
     end
@@ -54,25 +65,28 @@ return {
     local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
 
     set_ft_config("javascript", {
+      w_biome("javascript"),
       w_eslint_d("javascript"),
       w_prettierd("javascript"),
     })
 
     set_ft_config("typescript", {
+      w_biome("typescript"),
       w_eslint_d("typescript"),
       w_prettierd("typescript"),
       w_denols("typescript"),
     })
 
-    -- eww jsx, i think i am going to ... 🤢
     set_ft_config("typescriptreact", {
+      w_biome("typescript"),
       w_eslint_d("typescript"),
       w_prettierd("typescript"),
     })
 
     set_ft_config("javascriptreact", {
-      w_eslint_d("typescript"),
-      w_prettierd("typescript"),
+      w_biome("javascript"),
+      w_eslint_d("javascript"),
+      w_prettierd("javascript"),
     })
   end,
   load = function(on_attach)
@@ -99,7 +113,7 @@ return {
       on_attach = on_attach,
       root_dir = function(filename, bufnr)
         local denoRootDir =
-            lspconfig.util.root_pattern("deno.json", "deno.json")(filename)
+          lspconfig.util.root_pattern("deno.json", "deno.json")(filename)
         if denoRootDir then
           return nil
         end
