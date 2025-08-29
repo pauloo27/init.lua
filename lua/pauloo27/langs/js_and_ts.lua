@@ -22,11 +22,6 @@ local denofmt = {
   files = { "deno.json", "deno.jsonc" },
 }
 
-local biome = {
-  name = "biome",
-  files = { "biome.json" },
-}
-
 local eslint_d = {
   name = "eslint_d",
   files = {
@@ -67,22 +62,30 @@ return {
     use_format(
       { "javascript", "javascriptreact" },
       "javascript",
-      { biome, prettierd, eslint_d }
+      { prettierd, eslint_d }
     )
 
     use_format(
       { "typescript", "typescriptreact" },
       "typescript",
-      { denofmt, biome, prettierd, eslint_d }
+      { denofmt, prettierd, eslint_d }
     )
   end,
-  load = function(on_attach)
+  load = function()
     local add_ft = require("pauloo27.langs.tailwindcss").add_ft
     add_ft({ "javascriptreact", "typescriptreact", "html" })
 
     local lspconfig = require("lspconfig")
-    lspconfig.denols.setup({
-      root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+
+    vim.lsp.config("denols", {
+      root_dir = function(bufnr, on_dir)
+        local project_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
+        if not project_root then
+          return
+        end
+
+        on_dir(project_root)
+      end,
       init_options = {
         lint = true,
         suggest = {
@@ -93,21 +96,38 @@ return {
           },
         },
       },
-      on_attach = on_attach,
     })
 
-    lspconfig.ts_ls.setup({
-      on_attach = on_attach,
-      root_dir = function(filename, bufnr)
+    vim.lsp.config("ts_ls", {
+      root_dir = function(bufnr, on_dir)
+        -- ignore deno
         local denoRootDir =
-          lspconfig.util.root_pattern("deno.json", "deno.json")(filename)
+          lspconfig.util.root_pattern("deno.json", "deno.json")(bufnr)
         if denoRootDir then
           return nil
         end
 
-        return lspconfig.util.root_pattern("package.json")(filename)
+        local root_markers = {
+          "package-lock.json",
+          "yarn.lock",
+          "pnpm-lock.yaml",
+          "bun.lockb",
+          "bun.lock",
+        }
+        -- Give the root markers equal priority by wrapping them in a table
+        root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers }
+          or root_markers
+        local project_root = vim.fs.root(bufnr, root_markers)
+        if not project_root then
+          return
+        end
+
+        on_dir(project_root)
       end,
-      single_file_support = false,
     })
+
+    vim.lsp.enable("denols")
+    vim.lsp.enable("ts_ls")
+    vim.lsp.enable("biome")
   end,
 }

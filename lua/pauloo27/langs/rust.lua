@@ -2,9 +2,8 @@ return {
   treesitter = {
     ensure_installed = { "rust" },
   },
-  load = function(on_attach)
-    require("lspconfig").rust_analyzer.setup({
-      on_attach = on_attach,
+  load = function()
+    vim.lsp.config("rust_analyzer", {
       cmd = { "rustup", "run", "stable", "rust-analyzer" },
       settings = {
         ["rust-analyzer"] = {
@@ -14,5 +13,6 @@ return {
         },
       },
     })
+    vim.lsp.enable("rust_analyzer")
   end,
 }

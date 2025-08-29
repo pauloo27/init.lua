@@ -11,10 +11,8 @@ return {
       end,
     })
   end,
-  load = function(on_attach, capabilities)
-    require("lspconfig").gopls.setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
+  load = function()
+    vim.lsp.config("gopls", {
       settings = {
         gopls = {
           experimentalPostfixCompletions = true,
@@ -25,5 +23,6 @@ return {
         usePlaceholders = true,
       },
     })
+    vim.lsp.enable("gopls")
   end,
 }

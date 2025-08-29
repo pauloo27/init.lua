@@ -1,5 +1,5 @@
 return {
-  load = function(on_attach)
-    require("lspconfig").nil_ls.setup({ on_attach = on_attach })
+  load = function()
+    vim.lsp.enable("nil_ls")
   end,
 }

@@ -10,10 +10,10 @@ return {
       table.insert(filetypes, ft_to_add)
     end
   end,
-  load = function(on_attach)
-    require("lspconfig").tailwindcss.setup({
-      on_attach = on_attach,
+  load = function()
+    vim.lsp.config("tailwindcss", {
       filetypes = filetypes,
     })
+    vim.lsp.enable("tailwindcss")
   end,
 }

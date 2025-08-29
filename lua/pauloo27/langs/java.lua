@@ -1,5 +1,8 @@
 return {
-  load = function(on_attach)
-    require("lspconfig").jdtls.setup({ on_attach = on_attach })
+  treesitter = {
+    ensure_installed = { "java" },
+  },
+  load = function()
+    vim.lsp.enable("jdtls")
   end,
 }

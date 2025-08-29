@@ -14,16 +14,16 @@ local register_langs = lang_loader.register_langs
 register_langs({
   require("pauloo27.langs.lua"), -- lua support (usefull for nvim config)
   require("pauloo27.langs.go"), -- go support
-  require("pauloo27.langs.templ"), -- go templ support
+  --require("pauloo27.langs.templ"), -- go templ support
   require("pauloo27.langs.js_and_ts"), -- js and ts support
   require("pauloo27.langs.svelte"), -- svelte support
   require("pauloo27.langs.tailwindcss"), -- js and ts support
-  require("pauloo27.langs.java"), -- java support
+  --require("pauloo27.langs.java"), -- java support
   require("pauloo27.langs.rust"), -- rust support
-  require("pauloo27.langs.elixir"), -- elixir support
+  --require("pauloo27.langs.elixir"), -- elixir support
   require("pauloo27.langs.c"), -- c support
-  require("pauloo27.langs.nix"), -- nix support
-  require("pauloo27.langs.gleam"), -- gleam support
+  --require("pauloo27.langs.nix"), -- nix support
+  --require("pauloo27.langs.gleam"), -- gleam support
 })
 
 -- prepare the plugin manager (lazy.nvim)
@@ -38,7 +38,7 @@ load_plugins({
   require("pauloo27.plugins.nice"), -- some nice to have stuff
   require("pauloo27.plugins.wakatime"), -- track coding time
   require("pauloo27.plugins.git"), -- git integration
-  require("pauloo27.plugins.tex"), -- basic latex support
+  --require("pauloo27.plugins.tex"), -- basic latex support
 })
 
 require("pauloo27.misc.gf") -- go to file under cursor in other window

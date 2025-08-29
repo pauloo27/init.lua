@@ -10,29 +10,44 @@ return {
   end,
   -- treesitter parser for lua is a must for treesitter, so it's included
   -- in the treesitter config, not here
-  load = function(on_attach)
-    require("lspconfig").lua_ls.setup({
-      on_attach = on_attach,
+  load = function()
+    vim.lsp.config("lua_ls", {
+      on_init = function(client)
+        if client.workspace_folders then
+          local path = client.workspace_folders[1].name
+          if
+            path ~= vim.fn.stdpath("config")
+            and (
+              vim.uv.fs_stat(path .. "/.luarc.json")
+              or vim.uv.fs_stat(path .. "/.luarc.jsonc")
+            )
+          then
+            return
+          end
+        end
+
+        client.config.settings.Lua =
+          vim.tbl_deep_extend("force", client.config.settings.Lua, {
+            runtime = {
+              version = "LuaJIT",
+              path = {
+                "lua/?.lua",
+                "lua/?/init.lua",
+              },
+            },
+            -- Make the server aware of Neovim runtime files
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME,
+              },
+            },
+          })
+      end,
       settings = {
-        Lua = {
-          completion = {
-            callSnippet = "Replace",
-          },
-          runtime = {
-            version = "LuaJIT",
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { "vim" },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file("", true),
-          },
-          telemetry = {
-            enable = false,
-          },
-        },
+        Lua = {},
       },
     })
+    vim.lsp.enable("lua_ls")
   end,
 }

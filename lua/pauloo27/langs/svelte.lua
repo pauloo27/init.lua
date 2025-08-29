@@ -11,20 +11,9 @@ return {
       end,
     })
   end,
-  load = function(on_attach)
+  load = function()
     local add_ft = require("pauloo27.langs.tailwindcss").add_ft
     add_ft("svelte")
-
-    require("lspconfig").svelte.setup({
-      on_attach = function(client)
-        vim.api.nvim_create_autocmd("BufWritePost", {
-          pattern = { "*.js", "*.ts" },
-          callback = function(ctx)
-            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-          end,
-        })
-        on_attach(client)
-      end,
-    })
+    vim.lsp.enable("svelte")
   end,
 }
