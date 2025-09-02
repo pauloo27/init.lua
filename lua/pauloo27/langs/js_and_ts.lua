@@ -47,6 +47,9 @@ return {
   },
   pre_load = function()
     local set_ft_config = require("pauloo27.plugins._.format").set_ft_config
+    local if_not_biome = function()
+      return not has_any_file_in_root("biome.json")
+    end
 
     local use_format = function(filetypes, lang, formatters)
       local opts = {}
@@ -55,7 +58,7 @@ return {
       end
 
       for _, ft in ipairs(filetypes) do
-        set_ft_config(ft, opts)
+        set_ft_config(ft, opts, if_not_biome)
       end
     end
 

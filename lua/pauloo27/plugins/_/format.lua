@@ -28,8 +28,21 @@ end, {})
 
 M.ft_config = {}
 
-M.set_ft_config = function(ft, opts)
+M.formatter_filter = {}
+
+M.set_ft_config = function(ft, opts, filter)
   M.ft_config[ft] = opts
+  if filter ~= nil then
+    M.formatter_filter[ft] = filter
+  end
+end
+
+M.should_use_formatter = function(ft, bufnr)
+  if M.formatter_filter[ft] then
+    return M.formatter_filter[ft](ft, bufnr)
+  end
+
+  return M.ft_config[ft] ~= nil
 end
 
 M.format = function(options, write)
@@ -37,12 +50,11 @@ M.format = function(options, write)
     return
   end
 
-  local params = util.make_formatting_params(options)
   local bufnr = vim.api.nvim_get_current_buf()
+  local ft = vim.bo.filetype
 
   -- try to use formatter.nvim
-  local ft = vim.bo.filetype
-  if M.ft_config[ft] ~= nil then
+  if M.should_use_formatter(ft, bufnr) then
     if write then
       vim.cmd("FormatWrite")
     else
@@ -51,6 +63,8 @@ M.format = function(options, write)
 
     return
   end
+
+  local params = util.make_formatting_params(options)
 
   -- fallback to lsp client formatting
   select_best_client(function(client)
