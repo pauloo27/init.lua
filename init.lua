@@ -1,7 +1,3 @@
--- the "pauloo27" prefix is to avoid conflicts with other plugins
--- not because i'm a narcissist, i am just a little bit
--- and even if i was, i would be a very humble one
-
 require("pauloo27.core.prefs") -- general preferences
 require("pauloo27.core.mappings") -- general mappings
 
@@ -9,7 +5,7 @@ local lang_loader = require("pauloo27.langs.loader")
 local load_langs = lang_loader.load_langs
 local register_langs = lang_loader.register_langs
 
--- i only did it this way so i can have the toggle languages and
+-- i only did it this way so i can toggle languages and
 -- plugins per computer, since I use this config for personal and work
 register_langs({
   require("pauloo27.langs.lua"), -- lua support (usefull for nvim config)
@@ -19,9 +15,9 @@ register_langs({
   require("pauloo27.langs.svelte"), -- svelte support
   require("pauloo27.langs.tailwindcss"), -- js and ts support
   --require("pauloo27.langs.java"), -- java support
-  require("pauloo27.langs.rust"), -- rust support
+  --require("pauloo27.langs.rust"), -- rust support
   --require("pauloo27.langs.elixir"), -- elixir support
-  require("pauloo27.langs.c"), -- c support
+  --require("pauloo27.langs.c"), -- c support
   --require("pauloo27.langs.nix"), -- nix support
   --require("pauloo27.langs.gleam"), -- gleam support
 })
@@ -30,15 +26,15 @@ register_langs({
 local load_plugins = require("pauloo27.plugins.loader").load
 
 load_plugins({
-  require("pauloo27.plugins.rest"), -- rest client
   require("pauloo27.plugins.lsp"), -- basic lsp support
+  require("pauloo27.plugins.git"), -- git integration
   require("pauloo27.plugins.navigation"), -- better navigation, with Telescope and Neo-tree
   require("pauloo27.plugins.appearence"), -- nice looking vim
-  --require("pauloo27.plugins.copilot"), -- copilot integration
   require("pauloo27.plugins.nice"), -- some nice to have stuff
   require("pauloo27.plugins.wakatime"), -- track coding time
-  require("pauloo27.plugins.git"), -- git integration
+  require("pauloo27.plugins.rest"), -- rest client
   --require("pauloo27.plugins.tex"), -- basic latex support
+  --require("pauloo27.plugins.copilot"), -- copilot integration
 })
 
 require("pauloo27.misc.gf") -- go to file under cursor in other window
