@@ -6,7 +6,7 @@ local apply_theme = function()
   if os.getenv("USER") == "root" then
     vim.cmd("colorscheme darkblue")
   else
-    vim.cmd("colorscheme rose-pine-moon")
+    vim.cmd("colorscheme rose-pine")
   end
 
   -- transparent background
